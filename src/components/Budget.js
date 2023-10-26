@@ -7,10 +7,22 @@ const Budget = () => {
     const handleBudgetChange = (event) => {
         setNewBudget(event.target.value);
     }
+    const handleBudgetBlur = () => {
+        // hard coded this not sure how to fix it
+        // just want to get val from expenseTotal
+        if(newBudget < 500) { 
+            alert("You cannot reduce the budget value lower than the spending");
+        }
+    }
     return (
 <div className='alert alert-secondary'>
-<span>Budget: £{budget}</span>
-<input type="number" step="10" value={newBudget} onChange={handleBudgetChange}></input>
+<span>Budget: £{newBudget}</span>
+<input 
+    type="number" 
+    step="10" 
+    value={newBudget} 
+    onChange={handleBudgetChange}
+    onBlur={handleBudgetBlur}></input>
 </div>
     );
 };
